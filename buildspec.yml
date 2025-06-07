@@ -14,10 +14,10 @@ phases:
       - echo Building the WAR project...
       - mvn clean package -DskipTests
       - ls target/
-      # Find WAR file and rename to ROOT.war
-      - WAR_FILE=$(ls target/*.war | head -n 1)
-      - echo "Found WAR file: $WAR_FILE"
-      - cp "$WAR_FILE" ROOT.war
+      - |
+        WAR_FILE=$(ls target/*.war | head -n 1)
+        echo "Found WAR file: $WAR_FILE"
+        cp "$WAR_FILE" ROOT.war
 
   post_build:
     commands:
