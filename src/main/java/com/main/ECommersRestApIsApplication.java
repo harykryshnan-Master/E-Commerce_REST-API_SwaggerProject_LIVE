@@ -25,6 +25,7 @@ public class ECommersRestApIsApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(ECommersRestApIsApplication.class, args);
+        System.out.println("======== ECommersRestApIsApplication Starting now...!!! ==============");
     }
 
     @Override
