@@ -13,6 +13,8 @@
 // }
 
 
+package com.main;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -22,11 +24,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class ECommersRestApIsApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(ECommersRestApisApplication.class, args);
+        SpringApplication.run(ECommersRestApIsApplication.class, args);
     }
 
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ECommersRestApisApplication.class);
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(ECommersRestApIsApplication.class);
     }
 }
+
