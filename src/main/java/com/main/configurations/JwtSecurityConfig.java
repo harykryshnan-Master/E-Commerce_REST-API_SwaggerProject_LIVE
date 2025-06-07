@@ -33,7 +33,7 @@ public class JwtSecurityConfig{
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http.csrf().disable()
 //            .authorizeHttpRequests(auth -> auth
-//                .requestMatchers("/api/auth/**", "/swagger-ui/**", "/api-docs/**")
+//                .requestMatchers("/api/auth/**", "/swagger-ui/**", "/api-docs/**","/api/**")
 //                .permitAll()  // Allow access to Swagger and auth APIs without authentication
 //                .anyRequest().authenticated()  // All other requests need to be authenticated
 //            )
@@ -85,6 +85,7 @@ public class JwtSecurityConfig{
         configuration.addAllowedOrigin("*");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
+	configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
