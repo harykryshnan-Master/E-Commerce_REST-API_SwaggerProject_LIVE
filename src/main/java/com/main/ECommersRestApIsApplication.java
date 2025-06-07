@@ -21,16 +21,17 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class ECommersRestApIsApplication extends SpringBootServletInitializer {
+public class EcommersRestApisApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(ECommersRestApIsApplication.class, args);
-        System.out.println("======== ECommersRestApIsApplication Starting now...!!! ==============");
+        SpringApplication.run(EcommersRestApisApplication.class, args);
+        System.out.println("========= EcommersRestApisApplication started successfully! =========");
     }
 
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(ECommersRestApIsApplication.class);
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(EcommersRestApisApplication.class);
     }
 }
+
 
