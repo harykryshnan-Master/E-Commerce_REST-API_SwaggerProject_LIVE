@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo Installing dependencies...
+      - apt-get update -y
+      - apt-get install maven -y
+
+  build:
+    commands:
+      - echo Building the WAR project...
+      - mvn clean package -DskipTests
+      - ls target/
+      # Find WAR file and rename to ROOT.war
+      - WAR_FILE=$(ls target/*.war | head -n 1)
+      - echo "Found WAR file: $WAR_FILE"
+      - cp "$WAR_FILE" ROOT.war
+
+  post_build:
+    commands:
+      - echo Build complete.
+      - mkdir -p deploy_bundle
+      - cp ROOT.war deploy_bundle/
+      - cp appspec.yml deploy_bundle/
+      - cp -r scripts deploy_bundle/
+      - echo Folder structure prepared.
+
+artifacts:
+  base-directory: deploy_bundle
+  files:
+    - '**/*'
+  discard-paths: no
