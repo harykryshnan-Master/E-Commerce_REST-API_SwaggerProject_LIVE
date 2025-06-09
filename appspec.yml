@@ -4,6 +4,8 @@ os: linux
 files:
   - source: ROOT.war
     destination: /home/ubuntu/deployments/
+  - source: .env
+    destination: /home/ubuntu/deployments/
 
 hooks:
   BeforeInstall:
