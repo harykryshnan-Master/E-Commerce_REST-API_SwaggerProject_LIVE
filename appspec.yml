@@ -4,23 +4,23 @@ os: linux
 files:
   - source: ROOT.war
     destination: /home/ubuntu/deployments/
-  - source: .env
-    destination: /home/ubuntu/deployments/
   - source: scripts/
     destination: /home/ubuntu/deployments/scripts/
+  - source: .env
+    destination: /home/ubuntu/deployments/
 
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/deployments/scripts/install_dependencies.sh
+    - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
 
   ApplicationStop:
-    - location: /home/ubuntu/deployments/scripts/stop_server.sh
+    - location: scripts/stop_server.sh
       timeout: 300
       runas: root
 
   ApplicationStart:
-    - location: /home/ubuntu/deployments/scripts/start_server.sh
+    - location: scripts/start_server.sh
       timeout: 300
       runas: root
