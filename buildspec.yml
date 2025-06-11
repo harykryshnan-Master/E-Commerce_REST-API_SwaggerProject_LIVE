@@ -26,7 +26,7 @@ phases:
       - cp ROOT.war deploy_bundle/
       - cp appspec.yml deploy_bundle/
       - cp -r scripts deploy_bundle/
-      - cp .env deploy_bundle/
+      - cp scripts/.env deploy_bundle/
       - echo Folder structure prepared.
 
 artifacts:
