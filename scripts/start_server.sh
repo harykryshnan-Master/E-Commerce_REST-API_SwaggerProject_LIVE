@@ -2,13 +2,14 @@
 
 echo "=== Starting application ==="
 
-# Source environment variables from .env file if exists
-if [ -f /home/ubuntu/deployments/.env ]; then
-  echo "Loading environment variables from .env"
-  export $(cat /home/ubuntu/deployments/.env | xargs)
-else
-  echo ".env file not found, proceeding without env vars."
-fi
+# Load env variables from Parameter Store
+DOMAIN=$(aws ssm get-parameter --name "/ecomapp/DOMAIN" --with-decryption --query "Parameter.Value" --output text)
+MYSQLHOST=$(aws ssm get-parameter --name "/ecomapp/MYSQLHOST" --with-decryption --query "Parameter.Value" --output text)
+MYSQL_DATABASE=$(aws ssm get-parameter --name "/ecomapp/MYSQL_DATABASE" --with-decryption --query "Parameter.Value" --output text)
+MYSQLUSER=$(aws ssm get-parameter --name "/ecomapp/MYSQLUSER" --with-decryption --query "Parameter.Value" --output text)
+MYSQLPASSWORD=$(aws ssm get-parameter --name "/ecomapp/MYSQLPASSWORD" --with-decryption --query "Parameter.Value" --output text)
+
+echo "Environment variables loaded."
 
 if [ -f /home/ubuntu/deployments/ROOT.war ]; then
   nohup java -jar /home/ubuntu/deployments/ROOT.war > /home/ubuntu/deployments/app.log 2>&1 &
