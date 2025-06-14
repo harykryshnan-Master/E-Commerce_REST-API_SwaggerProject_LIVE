@@ -3,11 +3,17 @@
 echo "=== Starting application ==="
 
 # Load env variables from Parameter Store
-DOMAIN=$(aws ssm get-parameter --name "/ecomapp/DOMAIN" --with-decryption --query "Parameter.Value" --output text)
-MYSQLHOST=$(aws ssm get-parameter --name "/ecomapp/MYSQLHOST" --with-decryption --query "Parameter.Value" --output text)
-MYSQL_DATABASE=$(aws ssm get-parameter --name "/ecomapp/MYSQL_DATABASE" --with-decryption --query "Parameter.Value" --output text)
-MYSQLUSER=$(aws ssm get-parameter --name "/ecomapp/MYSQLUSER" --with-decryption --query "Parameter.Value" --output text)
-MYSQLPASSWORD=$(aws ssm get-parameter --name "/ecomapp/MYSQLPASSWORD" --with-decryption --query "Parameter.Value" --output text)
+export DOMAIN=$(aws ssm get-parameter --name "/ecomapp/DOMAIN" --with-decryption --query "Parameter.Value" --output text)
+export MYSQLHOST=$(aws ssm get-parameter --name "/ecomapp/MYSQLHOST" --with-decryption --query "Parameter.Value" --output text)
+export MYSQL_DATABASE=$(aws ssm get-parameter --name "/ecomapp/MYSQL_DATABASE" --with-decryption --query "Parameter.Value" --output text)
+export MYSQLUSER=$(aws ssm get-parameter --name "/ecomapp/MYSQLUSER" --with-decryption --query "Parameter.Value" --output text)
+export MYSQLPASSWORD=$(aws ssm get-parameter --name "/ecomapp/MYSQLPASSWORD" --with-decryption --query "Parameter.Value" --output text)
+
+echo $DOMAIN
+echo $MYSQLHOST
+echo $MYSQL_DATABASE
+echo $MYSQLUSER
+echo $MYSQLPASSWORD
 
 echo "Environment variables loaded."
 
